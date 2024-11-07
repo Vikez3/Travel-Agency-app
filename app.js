@@ -106,7 +106,7 @@ app.use(
   })
 );
 
-app.use(compression);
+app.use(compression());
 
 // test middleware
 app.use((req, res, next) => {
