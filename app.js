@@ -22,6 +22,8 @@ const { webhookCheckout } = require('./controllers/bookingController');
 
 const app = express();
 
+app.enable('trust proxy');
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -42,21 +44,19 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 100,
+  message: 'Too many requests from this IP, please try again later!'
+});
+
+app.use('/api', limiter);
+
 app.post(
   '/webhook-checkout',
   express.raw({ type: 'application/json' }),
   webhookCheckout
 );
-
-app.set('trust proxy', 1); // For apps behind one proxy
-
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  trustProxy: true // Enables trust proxy validation
-});
-
-app.use(limiter);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
