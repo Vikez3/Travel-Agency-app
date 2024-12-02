@@ -17,6 +17,21 @@ const bookBtn = document.querySelector('#book-tour');
 // VALUES
 
 // DELEGATION
+
+const hamburgerBtn = document.querySelector('.btn__hamburger');
+const dropdown = document.querySelector('.dropdown');
+
+hamburgerBtn.addEventListener('click', () => {
+  dropdown.classList.toggle('visible');
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', e => {
+  if (!hamburgerBtn.contains(e.target) && !dropdown.contains(e.target)) {
+    dropdown.classList.remove('visible');
+  }
+});
+
 if (mapBox) {
   const locations = JSON.parse(
     document.getElementById('map').dataset.locations

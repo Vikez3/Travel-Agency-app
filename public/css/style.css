@@ -305,38 +305,92 @@ body {
 
 .header {
   background-color: #444;
-  padding: 0 5rem;
-  height: 8rem;
+  padding: 2rem 2rem;
   position: relative;
   z-index: 100;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
-@media only screen and (max-width: 62.5em) {
+@media (min-width: 640px) {
   .header {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+    padding: 2rem 6rem;
   }
+}
+.btn__hamburger {
+  width: 30px;
+  background-color: transparent;
+  border: 0;
+}
+@media (min-width: 640px) {
+  .btn__hamburger {
+    display: none;
+  }
+}
+
+.btn__hamburger:hover {
+  scale: 1.1;
+  cursor: pointer;
+  transition: ease-in-out 300ms;
+}
+.btn__hamburger svg {
+  fill: #fff;
+}
+
+@media (max-width: 639px) {
+  .pc__header {
+    display: none;
+  }
+}
+
+.img-link {
+  width: 6rem;
+  margin: 0 !important;
 }
 .header__logo img {
-  height: 3.5rem;
+  width: 100%;
+  height: auto;
+  display: block;
 }
-@media only screen and (max-width: 62.5em) {
-  .header__logo {
-    -webkit-box-ordinal-group: 0;
-    -ms-flex-order: -1;
-    order: -1;
-    margin-bottom: 1.5rem;
-  }
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 2rem;
+  background-color: #444;
+  padding: 1.5rem;
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  width: 200px;
+}
+
+.dropdown a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+}
+
+.dropdown a:hover {
+  background-color: #555;
+}
+
+.dropdown img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.dropdown.visible {
+  display: flex;
+}
+.btn-dropdown {
+  font-size: 1.6rem ;
+  padding: 0.7rem 1.5rem !important;
+  border-radius: 10rem !important;
+  display: inline-block;
+  width: fit-content;
 }
 
 .section-header {
@@ -1204,11 +1258,14 @@ body {
   padding: 2.5rem 3rem;
   border-top: 1px solid #f1f1f1;
   font-size: 1.4rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
-  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.btn--card-footer {
+  width: 100%;
+  display: block;
+  text-align: center;
 }
 .card__footer-value {
   font-weight: 700;
@@ -1225,6 +1282,16 @@ body {
   justify-self: end;
   -ms-flex-item-align: center;
   align-self: center;
+}
+@media (max-width: 500px) {
+  .card-heading {
+    font-size: 1.75rem;
+    text-align: left;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .error {
