@@ -33,14 +33,6 @@ document.addEventListener('click', e => {
   }
 });
 
-if (mapBox) {
-  const locations = JSON.parse(
-    document.getElementById('map').dataset.locations
-  );
-
-  displayMap(locations);
-}
-
 if (loginForm) {
   loginForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -61,7 +53,6 @@ if (signupForm) {
     signup(name, email, password, passwordConfirm);
   });
 }
-
 if (logOutBtns) {
   logOutBtns.forEach(btn => {
     btn.addEventListener('click', logout);
@@ -108,6 +99,14 @@ if (bookBtn) {
     const { tourId } = e.target.dataset;
     bookTour(tourId);
   });
+}
+
+if (mapBox) {
+  const locations = JSON.parse(
+    document.getElementById('map').dataset.locations
+  );
+
+  displayMap(locations);
 }
 
 const alertMessage = document.querySelector('body').dataset.alert;
