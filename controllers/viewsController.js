@@ -56,6 +56,33 @@ exports.getAccount = (req, res) => {
   });
 };
 
+exports.leaveReview = catchAsync(async (req, res, next) => {
+  // 1) Find all bookings for the user and populate the tours
+  const bookings = await Booking.find({ user: req.user.id });
+
+  // 2) Find tours with the returned IDs
+  const tourIDs = bookings.map(el => el.tour);
+  const tours = await Tour.find({ _id: { $in: tourIDs } });
+
+  const matchedBooking = tours.find(b => b.slug === req.params.slug);
+
+  // 3) If no matching tour is found, return an error
+  if (!matchedBooking) {
+    return next(
+      new AppError('You have not booked a tour with that name.', 404)
+    );
+  }
+
+  // 4) Render the review page for the matching tour
+  res.status(200).render('review', {
+    title: `${matchedBooking.name} Review`,
+    matchedBooking: matchedBooking.name,
+    tourId: matchedBooking._id,
+    userId: req.user._id,
+    slug: matchedBooking.slug
+  });
+});
+
 exports.getMyTours = catchAsync(async (req, res, next) => {
   // 1) Find all bookings
   const bookings = await Booking.find({ user: req.user.id });

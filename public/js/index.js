@@ -1,6 +1,7 @@
 /* eslint-disable */
 import '@babel/polyfill';
 import { login, logout, signup } from './login';
+import { reviewHandler } from './review';
 import { displayMap } from './mapbox';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
@@ -9,6 +10,7 @@ import { showAlert } from './alerts';
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
+const reviewForm = document.querySelector('.form--review');
 const signupForm = document.querySelector('.form--sign-up');
 const logOutBtns = document.querySelectorAll('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
@@ -51,6 +53,18 @@ if (signupForm) {
     const passwordConfirm = document.getElementById('password-confirm').value;
 
     signup(name, email, password, passwordConfirm);
+  });
+}
+if (reviewForm) {
+  reviewForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const tour = document.getElementById('tour').value;
+    const user = document.getElementById('user').value;
+    const review = document.getElementById('review').value;
+    const rating = document.getElementById('rating').value;
+    const slug = document.getElementById('slug').value;
+
+    reviewHandler(tour, user, review, rating, slug);
   });
 }
 if (logOutBtns) {
