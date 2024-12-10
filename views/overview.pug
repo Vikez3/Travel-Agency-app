@@ -44,3 +44,5 @@ block content
                                 | 
                                 span.card__footer-text= `rating (${tour.ratingsQuantity})`
                         a.btn.btn--green.btn--small.btn--card-footer(href=`/tour/${tour.slug}`) Details
+                        if currentPath === '/my-tours'
+                            a.btn.btn--white-2.btn--small.btn--card-footer(href=`/tour/${tour.slug}/review`) Leave a Review

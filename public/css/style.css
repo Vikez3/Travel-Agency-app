@@ -250,6 +250,11 @@ body {
 .btn--white::after {
   background-color: #fff;
 }
+.btn--white-2 {
+  background-color: #fff;
+  color: #55c57a;
+  border: 1px solid #55c57a !important;
+}
 
 .btn--green {
   background-color: #55c57a;
@@ -1543,4 +1548,44 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .nav-text {
+    display: none;
+  }
+  .side-nav svg {
+    margin-right: 0;
+  }
+  .side-nav a {
+    padding: 1rem !important;
+  }
+  .user-view__menu {
+    flex: auto 0 0;
+    padding: 1.5rem 0;
+  }
+  .admin-nav__heading {
+    margin: 0 1rem 1.5rem 1rem;
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-view__form-container {
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 375px) {
+  .user-view__form-container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .form__photo-upload {
+    flex-direction: column;
+  }
+  .form__user-photo {
+    margin-right: 0;
+  }
 }
