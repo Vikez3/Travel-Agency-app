@@ -4,10 +4,10 @@ header.header
             img(src='/img/logo-white.png' alt='Natours logo')
     div.pc__header            
         if user 
-            button.nav__el.nav__el--logout Log Out
             a.nav__el(href='/me') 
                 img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
                 span= user.name.split(' ')[0]
+            button.nav__el.nav__el--logout Log Out
         else
             div 
                 a.nav__el(href='/login') Log In    
@@ -17,10 +17,25 @@ header.header
             path(d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z")
     div.dropdown.hidden
         if user 
+            - if(user.role === 'admin')
+                a.nav__el(href='/me') 
+                    img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
+                    span= user.name.split(' ')[0]
+                a.nav__el(href='/my-tours') My Bookings    
+                a.nav__el(href=`/my-reviews?user=${user._id}`) My Reviews
+                a.nav__el(href='#') Manage Tours
+            - else
+                a.nav__el(href='/me') 
+                    img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
+                    span= user.name.split(' ')[0]
+                a.nav__el(href='/my-tours') My Bookings    
+                a.nav__el(href=`/my-reviews?user=${user._id}`) My Reviews 
+
+
+
+
             button.nav__el.nav__el--logout Log Out
-            a.nav__el(href='/me') 
-                img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
-                span= user.name.split(' ')[0]
         else
             a.nav__el(href='/login') Log In    
-            a.nav__el.nav__el--cta.btn-dropdown(href='/signup') Sign Up
+            //- a.nav__el.nav__el--cta.btn-dropdown(href='/signup') Sign Up
+            a.nav__el(href='/signup') Sign Up
