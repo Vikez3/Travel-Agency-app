@@ -3,7 +3,7 @@ import '@babel/polyfill';
 import { login, logout, signup } from './login';
 import { reviewHandler } from './review';
 import { displayMap } from './mapbox';
-import { updateSettings } from './updateSettings';
+import { previewPhoto, updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 import { showAlert } from './alerts';
 
@@ -16,6 +16,7 @@ const logOutBtns = document.querySelectorAll('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.querySelector('#book-tour');
+const uloadPp = document.querySelector('.form__upload');
 
 // VALUES
 
@@ -34,6 +35,10 @@ document.addEventListener('click', e => {
     dropdown.classList.remove('visible');
   }
 });
+
+if (uloadPp) {
+  uloadPp.addEventListener('change', previewPhoto);
+}
 
 if (loginForm) {
   loginForm.addEventListener('submit', e => {
