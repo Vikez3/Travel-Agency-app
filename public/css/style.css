@@ -79,6 +79,9 @@ body {
 .ma-bt-lg {
   margin-bottom: 3.5rem !important;
 }
+.ma-t-lg {
+  margin-top: 3.5rem !important;
+}
 
 .right {
   text-align: right !important;
@@ -1605,4 +1608,16 @@ textarea.form__input {
 .reviews__card__full {
   width: 100%;
   display: block;
+}
+
+.text-center {
+  display: block;
+  text-align: center;
+}
+.btn--center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block !important;
+  width: fit-content;
+  text-align: center;
 }

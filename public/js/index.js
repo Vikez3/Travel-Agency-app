@@ -36,6 +36,10 @@ document.addEventListener('click', e => {
   }
 });
 
+window.onload = function() {
+  window.scrollTo(0, 0);
+};
+
 if (uloadPp) {
   uloadPp.addEventListener('change', previewPhoto);
 }
